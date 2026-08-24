@@ -1,23 +1,22 @@
-name: Build APK
-
-on: [push, workflow_dispatch]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew assembleDebug
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+workflows:
+  android-debug:
+    name: Android Debug
+    instance_type: linux
+    max_build_duration: 30
+    environment:
+      java: 17            # AGP 8.5 / Kotlin 2.0 need JDK 17
+      vars:
+        PACKAGE_NAME: "com.example.medicationreminder"
+    scripts:
+      - name: Make gradlew executable
+        script: chmod +x $CM_BUILD_DIR/gradlew
+      - name: Point Gradle at the Android SDK
+        script: echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+      - name: Build debug APK
+        script: cd $CM_BUILD_DIR && ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - your@email.com
