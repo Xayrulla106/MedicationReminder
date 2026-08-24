@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MediRemind</string>
+
+    <!-- Notification channel -->
+    <string name="channel_alarm_name">Medication Alarms</string>
+    <string name="channel_alarm_desc">Exact-time medication reminders with full-screen alerts</string>
+
+    <!-- Notification content -->
+    <string name="notification_title">Time for your medication</string>
+    <string name="notification_taken">Mark as Taken</string>
+    <string name="notification_snooze">Snooze 10 min</string>
+
+    <!-- Alarm screen -->
+    <string name="alarm_take_now">Mark as Taken</string>
+    <string name="alarm_snooze">Snooze 10 min</string>
+    <string name="alarm_skip">Skip</string>
+
+    <!-- Permissions -->
+    <string name="perm_exact_title">Precise alarms required</string>
+    <string name="perm_exact_body">This app needs exact alarms to remind you at the correct time. Please enable \"Alarms &amp; reminders\" for MediRemind.</string>
+    <string name="perm_notif_title">Notifications</string>
+    <string name="perm_notif_body">Allow notifications so we can alert you when it is time to take your medication.</string>
+    <string name="open_settings">Open Settings</string>
+</resources>
